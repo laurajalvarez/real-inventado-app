@@ -1,97 +1,150 @@
 # ¿Real o Inventado?
 
-Aplicación tipo trivia donde el usuario pone a prueba su intuición identificando si una afirmación es **real** o **inventada**. El proyecto contempla autenticación de usuarios, gestión de preguntas y respuestas, control de puntaje y visualización de récords.
+Aplicación tipo trivia en la que el usuario debe decidir si una afirmación es real o inventada. El proyecto está planteado como un MVP académico de corto alcance, pensado para una entrega funcional en dos días de trabajo con un equipo de tres personas.
 
-## Descripción general
+## Objetivo del proyecto
 
-**¿Real o Inventado?** es una aplicación orientada al entretenimiento y la competencia ligera. El usuario inicia sesión, responde preguntas dentro de un tiempo límite y acumula puntos según sus aciertos. La experiencia está pensada para ser rápida, visual y fácil de usar desde dispositivos móviles.
+Construir una aplicación web con API que permita:
 
-## Objetivo
+- registrar e iniciar sesión de usuarios;
+- jugar una ronda corta de preguntas;
+- administrar preguntas y respuestas desde la API;
+- validar respuestas de tipo **Real** o **Inventado**;
+- calcular y guardar el puntaje de cada partida;
+- consultar resultados básicos del jugador.
 
-Desarrollar una aplicación con una API capaz de administrar usuarios, preguntas, respuestas y puntajes, ofreciendo además una interfaz amigable para el acceso al juego y la interacción con las rondas de preguntas.
+El foco de la entrega es tener una experiencia completa y funcional de juego, aunque sea con alcance reducido.
 
-## Funcionalidades principales
+## Alcance de la entrega del lunes
 
-- Inicio de sesión de usuarios.
-- Registro de nuevos usuarios.
-- CRUD de usuarios.
-- CRUD de preguntas.
-- CRUD de respuestas/opciones.
-- Gestión de puntajes.
-- Registro de intentos o partidas.
-- Validación de respuestas correctas.
-- Consulta de récords o historial de desempeño.
-- Organización de preguntas por temática o categoría.
+Para mantener el proyecto realista en tiempo y complejidad, la entrega del lunes se delimita a lo siguiente:
 
-## Flujo general de uso
+- registro de usuario;
+- inicio de sesión con correo/usuario y contraseña;
+- cierre de sesión;
+- partida individual de trivia;
+- preguntas precargadas en base de datos;
+- respuestas almacenadas en base de datos;
+- selección de respuesta entre **Real** e **Inventado**;
+- validación de aciertos y errores;
+- cálculo de puntaje final;
+- guardado del resultado de la partida;
+- consulta simple de historial o récords básicos;
+- CRUD de usuarios desde API;
+- CRUD de preguntas desde API;
+- CRUD de respuestas desde API;
+- consulta y actualización básica de puntajes desde API.
 
-1. El usuario accede a la pantalla de login.
-2. Inicia sesión con correo/usuario y contraseña.
-3. Entra al módulo principal del juego.
-4. Responde preguntas seleccionando entre **Real** o **Inventado**.
-5. El sistema evalúa la respuesta.
-6. Se actualiza el puntaje según el resultado.
-7. Al finalizar la ronda, el usuario puede consultar su desempeño y récords.
+## Fuera de alcance para esta entrega
 
-## Módulos del sistema
+Las siguientes ideas pueden quedar como mejoras posteriores, pero no forman parte del compromiso principal del lunes:
 
-### Autenticación
-Permite el acceso seguro de los usuarios mediante credenciales. Puede contemplar sesiones activas, cierre de sesión y recuperación futura de acceso.
+- inicio de sesión con Google o Facebook;
+- recuperación de contraseña;
+- panel administrativo completo;
+- CRUD completo desde interfaz para preguntas y categorías;
+- multijugador;
+- logros, insignias o temporadas;
+- ranking global avanzado;
+- manejo complejo de sesiones con refresh tokens persistidos;
+- modos de juego adicionales.
 
-### Gestión de usuarios
-Administra la información del jugador o administrador, así como sus permisos dentro de la plataforma.
+## Flujo principal del usuario
 
-### Gestión de preguntas y respuestas
-Permite crear, editar, listar y eliminar preguntas, además de registrar sus posibles respuestas o la marca de veracidad correspondiente.
+1. El usuario se registra o inicia sesión.
+2. Accede al juego.
+3. Responde una serie de afirmaciones marcando si son **reales** o **inventadas**.
+4. El sistema valida cada respuesta.
+5. Al finalizar la ronda, se calcula el puntaje.
+6. El usuario puede revisar su resultado y consultar sus partidas o récords básicos.
 
-### Puntaje y partidas
-Registra los resultados de cada intento del usuario, sus aciertos, su puntaje acumulado y el histórico de participación.
+## Funcionalidades comprometidas
 
-### Récords
-Muestra los mejores resultados o estadísticas relevantes de los jugadores.
+### Autenticación básica
 
-## Estructura lógica propuesta
+- registro de usuario;
+- inicio de sesión;
+- protección de acceso al juego.
 
-El sistema se apoya en entidades como:
+### Juego
 
-- **usuarios**
-- **roles**
-- **sesiones**
-- **preguntas**
-- **respuestas**
-- **categorías**
-- **intentos de juego**
-- **respuestas del usuario**
-- **historial de puntaje**
+- mostrar preguntas activas;
+- responder en formato binario: **Real** o **Inventado**;
+- registrar respuestas del usuario;
+- contar aciertos y errores;
+- calcular resultado final.
 
-## Alcance de la API
+### Resultados
 
-La API está pensada para exponer endpoints para:
+- guardar cada intento de juego;
+- consultar puntaje por partida;
+- mostrar historial o mejores resultados básicos.
 
-- autenticación
-- administración de usuarios
-- administración de preguntas
-- administración de respuestas
-- consulta y actualización de puntajes
-- consulta de historial o récords
+## Propuesta funcional simplificada
 
-## Beneficios de la aplicación
+Para esta primera entrega, el juego se modela como una trivia de afirmaciones. Cada pregunta tiene una sola verdad asociada:
 
-- Experiencia de juego rápida e intuitiva.
-- Posibilidad de administrar el contenido fácilmente.
-- Escalabilidad para agregar nuevas categorías, modos de juego o rankings.
-- Separación entre lógica de negocio y presentación mediante una API.
+- `Real`
+- `Inventado`
 
-## Posibles mejoras futuras
+Para cumplir también con la consigna académica, esas respuestas se almacenan de forma explícita en base de datos. En la práctica, cada pregunta puede tener dos registros de respuesta:
 
-- Recuperación de contraseña.
-- Rankings globales.
-- Niveles de dificultad más detallados.
-- Modo multijugador.
-- Logros o insignias.
-- Temporadas o eventos especiales.
-- Inicio de sesión con redes sociales.
+- `Real`
+- `Inventado`
+
+Una de ellas se marca como correcta. Así el proyecto mantiene una mecánica simple, pero sigue siendo compatible con CRUD de preguntas y respuestas.
+
+## Módulos del sistema para esta fase
+
+### 1. Usuarios
+
+Gestiona el registro, inicio de sesión y estado básico del jugador.
+
+### 2. Preguntas
+
+Almacena las afirmaciones del juego y su categoría.
+
+### 3. Respuestas
+
+Guarda las opciones asociadas a cada pregunta. Para este proyecto, normalmente serán dos: **Real** e **Inventado**, con una marcada como correcta.
+
+### 4. Partidas
+
+Registra cada intento del usuario, su puntaje, número de aciertos y fecha.
+
+### 5. Respuestas del usuario
+
+Guarda qué eligió el jugador en cada pregunta de una partida.
+
+## Alcance técnico esperado de la API
+
+La API puede quedar limitada a endpoints para:
+
+- registro e inicio de sesión;
+- administración de usuarios;
+- consulta de preguntas;
+- administración de preguntas;
+- administración de respuestas;
+- creación y cierre de partidas;
+- registro de respuestas del usuario;
+- consulta de resultados e historial básico;
+- consulta y actualización de puntajes.
+
+## Criterio de éxito de la entrega
+
+La entrega se considera cumplida si un usuario puede:
+
+- crear su cuenta o iniciar sesión;
+- jugar una ronda completa;
+- obtener un puntaje;
+- ver que su resultado quedó registrado.
+
+## Notas sobre diseño y documentación
+
+- Las pantallas en `/propuesta` deben entenderse como referencia visual, no como contrato exacto de implementación.
+- La prioridad es la funcionalidad mínima viable, no replicar todos los elementos visuales propuestos.
+- El modelo de base de datos debe responder al juego real que se entregará, no a funcionalidades futuras todavía no comprometidas.
 
 ## Conclusión
 
-**¿Real o Inventado?** es una propuesta de aplicación de trivia con una base sólida tanto a nivel funcional como estructural. Su combinación de autenticación, gestión de contenido y sistema de puntaje permite construir una experiencia entretenida y escalable, adecuada para prácticas académicas o como base para un producto más completo.
+**¿Real o Inventado?** se plantea como un MVP claro, alcanzable y funcional para una entrega corta. La estrategia correcta para el lunes es priorizar autenticación básica, juego completo, guardado de resultados y una estructura de datos simple pero coherente con la mecánica central del proyecto.
