@@ -2,6 +2,10 @@
 
 El modelo propuesto para la aplicación **¿Real o Inventado?** se diseñó para soportar autenticación, administración de preguntas y respuestas, así como el control de puntajes de cada usuario.
 
+### Diagrama del modelo de base de datos
+
+![Modelo de base de datos](./ModeloBD.png)
+
 ### Entidades principales
 
 #### `roles`
@@ -62,6 +66,8 @@ Permite llevar un historial de los puntos ganados o perdidos, útil para estadí
 ### 1. Pantalla de login
 La primera pantalla corresponde al acceso de la aplicación.
 
+![Pantalla de login](./pantalla1.png)
+
 #### Elementos observados
 - Título principal: **¿REAL O INVENTADO?**
 - Subtítulo motivacional: **Pon a prueba tu intuición**
@@ -77,6 +83,8 @@ Esta pantalla permite autenticar al usuario antes de ingresar al juego. También
 
 ### 2. Pantalla de juego
 La segunda pantalla corresponde a una ronda activa del juego.
+
+![Pantalla de juego](./pantalla2.png)
 
 #### Elementos observados
 - Encabezado con nombre de la app
